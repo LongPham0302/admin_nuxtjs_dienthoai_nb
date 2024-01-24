@@ -21,6 +21,16 @@
       autofocus
       placeholder="Full price..."
     />
+
+    <input
+      v-model="guarantee"
+      id="input1"
+      class="w-3/5 mt-5 border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none"
+      type="number"
+      autofocus
+      placeholder="Full price..."
+    />
+
     <br />
     <input class="mt-5" type="checkbox" id="checkbox" v-model="status" />
     <label for="checkbox"> {{ status ? "Còn hàng" : "Hết hàng" }} </label>
@@ -82,6 +92,7 @@ export default {
       images: null,
       status: null,
       basicInfo: "",
+      guarantee: 0,
     };
   },
   computed: {
@@ -113,6 +124,7 @@ export default {
         basicInfo: this.basicInfo,
         images: this.images,
         category: this.category,
+        guarantee: this.guarantee,
       };
       this.$store.dispatch("createProduct", data).then((res) => {
         if (res.ok === true) {

@@ -30,7 +30,7 @@
                 v-for="(image, imageIndex) in item.images"
                 :key="imageIndex"
                 class="mr-2 object-cover w-12 h-12"
-                :src="`http://localhost:4000/${image}`"
+                :src="`https://be-web-p8nb.onrender.com/${image}`"
                 alt=""
               />
             </div>
