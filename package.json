@@ -1,0 +1,41 @@
+{
+  "name": "my-nuxt-project",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "LongPham0302 <bekeo0302@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "@nuxtjs/axios": "^5.13.6",
+    "@truffle/hdwallet-provider": "^1.0.41-1",
+    "autoprefixer": "^10.4.17",
+    "axios": "^1.6.5",
+    "bootstrap": "^5.3.2",
+    "bootstrap-vue": "^2.23.1",
+    "nuxt": "^2.0.0",
+    "nuxt-swiper": "^1.2.2",
+    "postcss": "^8.4.33",
+    "swiper": "^11.0.5",
+    "tailwindcss": "^3.4.1",
+    "vuex": "^3.1.0",
+    "vuex-map-fields": "^1.4.1"
+  },
+  "devDependencies": {
+    "@egoist/tailwindcss-icons": "^1.7.2",
+    "@iconify/json": "^2.2.171",
+    "@nuxtjs/tailwindcss": "^6.10.4",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^4.19.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^4.0.0"
+  }
+}
