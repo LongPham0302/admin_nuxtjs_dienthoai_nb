@@ -58,7 +58,7 @@ export default {
 
   async getlistProducts({ commit }) {
     try {
-      const response = await axiosInstance.get("/product/");
+      const response = await axiosInstance.get("/product/product");
       if (response.status === 200) {
         commit("SET_LIST_PRODUCT", response.data);
       }
@@ -102,5 +102,29 @@ export default {
   async findProductbyId({ commit }, id) {
     const reuslt = await axiosInstance.get(`/product/${id}`);
     return reuslt.data;
+  },
+
+  async UpdateProduct({ commit }, { id, data }) {
+    try {
+      const response = await axiosInstance.put("/product/" + id, data);
+      if (response.status === 200) {
+        return {
+          ok: true,
+        };
+      } else {
+        return {
+          ok: false,
+        };
+      }
+    } catch (error) {}
+  },
+
+  async getListOrder({ commit }) {
+    try {
+      const response = await axiosInstance.get("/orders");
+      if (response.status === 200) {
+        return response.data;
+      }
+    } catch (error) {}
   },
 };

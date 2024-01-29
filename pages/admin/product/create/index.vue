@@ -21,19 +21,40 @@
       autofocus
       placeholder="Full price..."
     />
+    <label class="block mb-1 text-sm mt-5" for="input2"> guarantee:</label>
 
     <input
       v-model="guarantee"
-      id="input1"
+      id="input2"
       class="w-3/5 mt-5 border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none"
       type="number"
       autofocus
       placeholder="Full price..."
     />
 
-    <br />
-    <input class="mt-5" type="checkbox" id="checkbox" v-model="status" />
-    <label for="checkbox"> {{ status ? "Còn hàng" : "Hết hàng" }} </label>
+    <div class="mt-5">
+      <label>
+        <input
+          type="radio"
+          id="inStock"
+          value="true"
+          v-model="status"
+          name="productStatus"
+        />
+        Còn hàng
+      </label>
+    </div>
+
+    <label>
+      <input
+        type="radio"
+        id="outOfStock"
+        value="false"
+        v-model="status"
+        name="productStatus"
+      />
+      Hết hàng
+    </label>
 
     <select
       v-model="category"
@@ -90,7 +111,7 @@ export default {
       price: 0,
       error: "",
       images: null,
-      status: null,
+      status: true,
       basicInfo: "",
       guarantee: 0,
     };
@@ -121,7 +142,7 @@ export default {
         name: this.name,
         price: this.price,
         status: this.status,
-        basicInfo: this.basicInfo,
+        basicInfo: this.basicInfo.split('\n'),
         images: this.images,
         category: this.category,
         guarantee: this.guarantee,
