@@ -1,5 +1,7 @@
 const state = () => ({
-    categories: [],
-    products:[]
+  categories: [],
+  products: [],
+  headers: [],
+  footer: [],
 });
-export default state
+export default state;

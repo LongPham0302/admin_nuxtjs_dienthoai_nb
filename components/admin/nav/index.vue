@@ -27,6 +27,8 @@ export default {
           path: "/admin/category/",
         },
         { text: "Order", icon: "fas fa-bell", path: "/admin/order/" },
+        { text: "Header", icon: "fas fa-icons", path: "/admin/header/" },
+        { text: "Footer", icon: "fas fa-icons", path: "/admin/footer/" }
       ],
     };
   },
