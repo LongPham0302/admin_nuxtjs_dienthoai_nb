@@ -10,6 +10,5 @@ export default {
     components: {
         categoriesAdmin,
     },
-
 }
 </script>
