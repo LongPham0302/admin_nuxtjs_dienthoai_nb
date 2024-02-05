@@ -119,9 +119,13 @@ export default {
     } catch (error) {}
   },
 
-  async getListOrder({ commit }) {
+  async getListOrder({ commit }, { page = 1 }) {
     try {
-      const response = await axiosInstance.get("/orders");
+      const response = await axiosInstance.get("/orders", {
+        params: {
+          page: page,
+        },
+      });
       if (response.status === 200) {
         return response.data;
       }
