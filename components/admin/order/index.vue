@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mx-auto h-screen relative">
     <br />
-    <table class="table-auto w-full text-left">
+    <table class="table-auto w-full text-left" style="height: calc(100vh - 200px); overflow-y: auto;">
       <thead>
         <tr class="border-b p-2">
           <th>trạng thái</th>
@@ -27,7 +27,7 @@
               </span>
             </div>
           </td>
-          <div class="flex mt-5">
+          <div class="flex mt-5 pr-5">
             <button
               type="button"
               class="text-white bg-green-700 mr-5 p-3 rounded"
@@ -46,20 +46,24 @@
         </tr>
       </tbody>
     </table>
-    <div
-      class="flex items-center absolute bottom-0 right-0 bg-white p-4"
-      v-if="totalPages"
-    >
-      <div class="pagination">
-        <div
-          v-for="(item, index) in totalPages"
-          :key="index"
-          :class="{ 'page-item': true, active: index === currentPage }"
-          @click="changePage(index)"
-        >
-          {{ index }}
+    <div class="pagination-container">
+      <div
+        class="flex items-center top-2/3 right-0 bg-white p-4 justify-end"
+        v-if="totalPages"
+        style="position: sticky; left: 10; right: 0; z-index: 10;"
+
+      >
+        <div class="pagination">
+          <div
+            v-for="(item, index) in totalPages"
+            :key="index"
+            :class="{ 'page-item': true, active: index === currentPage }"
+            @click="changePage(index)"
+          >
+            {{ index }}
+          </div>
+          <!-- Add more page items as needed -->
         </div>
-        <!-- Add more page items as needed -->
       </div>
     </div>
   </div>

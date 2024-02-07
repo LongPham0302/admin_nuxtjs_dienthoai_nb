@@ -1,3 +1,5 @@
+// nuxt.config.js
+
 module.exports = {
   generate: {
     fallback: true,
@@ -13,6 +15,9 @@ module.exports = {
     "@plugins": "~/plugins",
     "@pages": "~/pages",
   },
+  modules: [
+    "cookie-universal-nuxt", // Thêm module cookie-universal-nuxt vào đây
+  ],
   /*
    ** Headers of the page
    */
@@ -48,5 +53,8 @@ module.exports = {
         },
       },
     },
+  },
+  router: {
+    middleware: "authenticated",
   },
 };

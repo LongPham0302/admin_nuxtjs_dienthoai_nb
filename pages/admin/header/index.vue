@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import headerAdmin from '@components/admin/head/index.vue'
+import headerAdmin from '@components/admin/headerClient/index.vue'
 
 export default {
     layout: 'admin',
