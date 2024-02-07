@@ -23,12 +23,12 @@
           <td class="pr-5">{{ item.name }}</td>
           <td  class="pr-5">{{ item.price }}</td>
           <td>
-            <div class="flex">
+            <div class="flex mr-2">
               <!-- Sử dụng vòng lặp v-for để duyệt qua tất cả các ảnh trong mảng item.images -->
               <img
                 v-for="(image, imageIndex) in item.images"
                 :key="imageIndex"
-                class="mr-2 object-cover w-12 h-12 mt-5"
+                class="mr-2 object-cover w-5 h-5 mt-5"
                 :src="`http://localhost:4000/${image}`"
                 alt=""
               />
