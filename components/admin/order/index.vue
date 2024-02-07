@@ -6,18 +6,14 @@
         <tr class="border-b p-2">
           <th>trạng thái</th>
           <th>số điện thoại người mua</th>
-          <th>địa chỉ người người mua</th>
-          <th>notes</th>
           <th>phương thức thanh toán</th>
           <th>sản phẩm</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(order, index) in orders" :key="index">
-          <td class="pr-5">{{ order.status }}</td>
+          <td class="pr-5">{{ order.status ? 'Đã xác nhận' : 'Chưa xác nhận' }}</td>
           <td class="pr-5">{{ order.phoneNumber }}</td>
-          <td class="pr-5">{{ order.shippingAddress }}</td>
-          <td class="pr-5">{{ order.notes }}</td>
           <td class="pr-5">{{ order.transferType }}</td>
           <td>
             <div class="flex">
@@ -31,14 +27,14 @@
             <button
               type="button"
               class="text-white bg-green-700 mr-5 p-3 rounded"
-              @click="updateProduct(item._id)"
+              @click="updateOrder(order._id)"
             >
               Update
             </button>
             <button
               type="button"
               class="text-white bg-red-700 p-3 rounded"
-              @click="deleteProduct(item._id)"
+              @click="deleteOrder(item._id)"
             >
               Delete
             </button>
@@ -101,6 +97,11 @@ export default {
           this.totalPages = res.pagination.totalPages;
         });
     },
+    updateOrder(orderId) {
+      console.log("orderId",orderId);
+      // Chuyển hướng người dùng đến trang chi tiết của order
+      this.$router.push(`/admin/order/${orderId}`);
+    }
   },
 };
 </script>

@@ -20,7 +20,6 @@ export default async function ({ app, redirect }) {
     const result = await app.store.dispatch("checkUserLogin", data.id);
 
     // Kiểm tra xem người dùng có phải là admin hay không
-    console.log("User isAdmin:", result.isAdmin);
     if (result.isAdmin !== "admin") {
       // Nếu không phải là admin
       // và chưa chuyển hướng, thực hiện chuyển hướng

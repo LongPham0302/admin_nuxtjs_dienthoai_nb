@@ -11,4 +11,7 @@ export default {
   SET_LIST_FOOTER(state, newValue) {
     state.footer = [...newValue];
   },
+  SET_ORDER(state, orderData) {
+    state.order = orderData; // Cập nhật dữ liệu đơn hàng trong state
+  }
 };

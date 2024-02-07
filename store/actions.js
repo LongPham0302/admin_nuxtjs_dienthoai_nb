@@ -100,8 +100,12 @@ export default {
   },
 
   async findProductbyId({ commit }, id) {
-    const reuslt = await axiosInstance.get(`/product/${id}`);
-    return reuslt.data;
+    try {
+      const result = await axiosInstance.get(`/product/${id}`);
+      if (result.status === 200) {
+        return result.data;
+      }
+    } catch (error) {}
   },
 
   async UpdateProduct({ commit }, { id, data }) {
@@ -276,5 +280,15 @@ export default {
     } catch (error) {
       console.error("Error fetching headers:", error);
     }
+  },
+
+  async getDetailedOrder({ commit }, id) {
+    try {
+      const result = await axiosInstance.get(`/orders/${id}`);
+      if (result.status === 200) {
+        commit("SET_ORDER", result.data);
+        return result.data;
+      }
+    } catch (error) {}
   },
 };
