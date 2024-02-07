@@ -342,4 +342,30 @@ export default {
       return error.response.data.message;
     }
   },
+
+  async updateBanner({}, { id, data }) {
+    try {
+      const response = await axiosInstance.put(`/banners/${id}`, data);
+      console.log("response", response);
+      if (response.status === 200) {
+        return {
+          ok: true,
+        };
+      } else {
+        return {
+          ok: false,
+        };
+      }
+    } catch (error) {
+      return error.response.data.message;
+    }
+  },
+  async getBanner({ commit }) {
+    try {
+      const result = await axiosInstance.get("/banners/");
+      if (result.status === 200) {
+        commit("SET_BANNERS", result.data[0]);
+      }
+    } catch (error) {}
+  },
 };

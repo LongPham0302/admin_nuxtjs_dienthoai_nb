@@ -5,5 +5,6 @@ const state = () => ({
   footer: [],
   order: null,
   totalPages: 0,
+  banners: {},
 });
 export default state;
