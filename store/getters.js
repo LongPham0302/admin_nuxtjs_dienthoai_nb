@@ -1,14 +1,8 @@
 export default {
-  getListCategories: (state) => {
-    return state.categories;
-  },
-  getListProduct: (state) => {
-    return state.products;
-  },
-  getListHeaders: (state) => {
-    return state.headers;
-  },
-  getListFooter: (state) => {
-    return state.footer;
-  },
+  // Rút gọn các getter chỉ có một dòng trả về
+  getListCategories: state => state.categories,
+  getListProduct: state => state.products,
+  getListHeaders: state => state.headers,
+  getListFooter: state => state.footer,
+  detailedOrder: state => state.order
 };
