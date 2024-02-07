@@ -257,4 +257,24 @@ export default {
       return error.response.data.message;
     }
   },
+
+  async logIn({ commit, state }, data) {
+    try {
+      const reuslt = await axiosInstance.post("/auth/login", data);
+      if (reuslt.status === 201) {
+        localStorage.setItem("key", JSON.stringify(reuslt.data));
+        this.$router.push("/");
+      }
+    } catch (error) {}
+  },
+  async checkUserLogin({}, id) {
+    try {
+      const response = await axiosInstance.get("/auth/" + id);
+      if (response.status === 200) {
+        return response.data;
+      }
+    } catch (error) {
+      console.error("Error fetching headers:", error);
+    }
+  },
 };

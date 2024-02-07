@@ -87,7 +87,6 @@ export default {
         operatingHours: this.operatingHours,
         image: this.image,
       };
-      console.log("data", data);
       this.$store
         .dispatch("updateHeader", { id: this.$route.params.id, data })
         .then((res) => {
