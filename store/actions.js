@@ -56,11 +56,16 @@ export default {
     }
   },
 
-  async getlistProducts({ commit }) {
+  async getlistProducts({ commit }, { page = 1 }) {
     try {
-      const response = await axiosInstance.get("/product/product");
+      const response = await axiosInstance.get("/product/product", {
+        params: {
+          page: page,
+        },
+      });
       if (response.status === 200) {
-        commit("SET_LIST_PRODUCT", response.data);
+        commit("SET_LIST_PRODUCT", response.data.products);
+        commit("SET_TOTAL_PAGES", response.data.pagination.totalPages);
       }
     } catch (error) {
       console.error("Error fetching categories:", error);
@@ -290,5 +295,51 @@ export default {
         return result.data;
       }
     } catch (error) {}
+  },
+
+  async deleteCategory({}, id) {
+    try {
+      const res = await axiosInstance.delete(`/categories/${id}`);
+      if (res.status === 200) {
+        return {
+          ok: true,
+        };
+      }
+      return {
+        ok: false,
+      };
+    } catch (error) {}
+  },
+
+  async deleteProduct({}, id) {
+    try {
+      const res = await axiosInstance.delete(`/product/${id}`);
+      if (res.status === 200) {
+        return {
+          ok: true,
+        };
+      }
+      return {
+        ok: false,
+      };
+    } catch (error) {}
+  },
+
+  //banner
+  async createBanner({}, data) {
+    try {
+      const response = await axiosInstance.post("/banners/", data);
+      if (response.status === 201) {
+        return {
+          ok: true,
+        };
+      } else {
+        return {
+          ok: false,
+        };
+      }
+    } catch (error) {
+      return error.response.data.message;
+    }
   },
 };

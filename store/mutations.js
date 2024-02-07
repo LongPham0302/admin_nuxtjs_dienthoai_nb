@@ -13,5 +13,8 @@ export default {
   },
   SET_ORDER(state, orderData) {
     state.order = orderData; // Cập nhật dữ liệu đơn hàng trong state
-  }
+  },
+  SET_TOTAL_PAGES(state, totalPages) {
+    state.totalPages = totalPages; // Cập nhật dữ liệu totalPages
+  },
 };

@@ -20,15 +20,12 @@ export default {
     return {
       menuItems: [
         { text: "Dashboard", icon: "fas fa-tachometer-alt" },
-        { text: "Products", icon: "fas fa-icons", path: "/admin/product/" },
-        {
-          text: "Categories",
-          icon: "fas fa-map-marked-alt",
-          path: "/admin/category/",
-        },
-        { text: "Order", icon: "fas fa-bell", path: "/admin/order/" },
-        { text: "Header", icon: "fas fa-icons", path: "/admin/header/" },
-        { text: "Footer", icon: "fas fa-icons", path: "/admin/footer/" }
+        { text: "Products", icon: "fas fa-box-open", path: "/admin/product/" },
+        { text: "Categories", icon: "fas fa-tags", path: "/admin/category/" },
+        { text: "Order", icon: "fas fa-shopping-cart", path: "/admin/order/" },
+        { text: "Header", icon: "fas fa-heading", path: "/admin/header/" },
+        { text: "Footer", icon: "fas fa-shoe-prints", path: "/admin/footer/" },
+        { text: "Banner", icon: "fas fa-images", path: "/admin/banner/" },
       ],
     };
   },
