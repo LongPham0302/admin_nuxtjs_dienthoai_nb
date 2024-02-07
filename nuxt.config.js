@@ -57,4 +57,8 @@ module.exports = {
   router: {
     middleware: "authenticated",
   },
+  plugins: [
+    // Other plugins
+    { src: "@/plugins/vue-fragment.js", mode: "client" },
+  ],
 };

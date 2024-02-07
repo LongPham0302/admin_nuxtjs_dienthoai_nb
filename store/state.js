@@ -3,6 +3,7 @@ const state = () => ({
   products: [],
   headers: [],
   footer: [],
-  order: null
+  order: null,
+  totalPages: 0,
 });
 export default state;
