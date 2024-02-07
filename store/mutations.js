@@ -17,4 +17,8 @@ export default {
   SET_TOTAL_PAGES(state, totalPages) {
     state.totalPages = totalPages; // Cập nhật dữ liệu totalPages
   },
+  SET_BANNERS(state, banners) {
+    state.banners = banners; // Cập nhật dữ liệu totalPages
+  },
+  
 };

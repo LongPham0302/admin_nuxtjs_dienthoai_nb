@@ -6,4 +6,5 @@ export default {
   getListFooter: (state) => state.footer,
   detailedOrder: (state) => state.order,
   gettotalPages: (state) => state.totalPages,
+  getBanner: (state) => state.banners,
 };
