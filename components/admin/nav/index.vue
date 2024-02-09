@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       menuItems: [
-        { text: "Dashboard", icon: "fas fa-tachometer-alt" },
+        // { text: "Dashboard", icon: "fas fa-tachometer-alt" },
         { text: "Products", icon: "fas fa-box-open", path: "/admin/product/" },
         { text: "Categories", icon: "fas fa-tags", path: "/admin/category/" },
         { text: "Order", icon: "fas fa-shopping-cart", path: "/admin/order/" },

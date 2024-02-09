@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <button
+      v-if="getListHeaders.length <= 0"
       type="button"
       class="text-white bg-blue-700 hover:bg-blue-800 rounded p-3 mt-4"
       @click="createHeader"
@@ -35,7 +36,7 @@
           <button
             type="button"
             class="text-white bg-red-700 p-3 rounded"
-            @click="deleteHeader(item._id)"
+            @click="deleteHeaders(item._id)"
           >
             Delete
           </button>
@@ -63,9 +64,12 @@ export default {
       this.$router.replace(`/admin/header/update/${headerId}`);
     },
     deleteHeaders(_id) {
-      // this.$router.replace(`'/admin/category/update'/${_id}`)
+      this.$store.dispatch("deleteHeader", _id).then((res) => {
+        if (res.ok === true) {
+          this.$router.go();
+        }
+      });
     },
   },
-
 };
 </script>

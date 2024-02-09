@@ -132,6 +132,16 @@ export default {
           return convertPriceToReadable(integerPart, suffix);
       }
     },
+    updateOrder(id) {
+      let data = {
+        status: true,
+      };
+      this.$store.dispatch("updateOrder", { id, data }).then((res) => {
+        if (res.ok === true) {
+          this.$router.replace("/admin/order/");
+        }
+      });
+    },
   },
 };
 </script>
