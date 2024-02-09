@@ -368,4 +368,19 @@ export default {
       }
     } catch (error) {}
   },
+
+  //verifyAccessToken
+  async verifyAccessToken({ commit }, access_token) {
+    try {
+      const response = await axiosInstance.post(
+        "/auth/verify-access-token",
+        access_token
+      );
+      if (response.status === 201) {
+        return response.data;
+      }
+    } catch (error) {
+    } finally {
+    }
+  },
 };
