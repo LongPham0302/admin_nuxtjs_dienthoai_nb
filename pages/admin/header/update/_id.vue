@@ -77,6 +77,7 @@ export default {
         formData.append("photo", this.$refs.file.files[i]);
       }
       const result = await this.$store.dispatch("upload", formData);
+      console.log(result.ok[0]);
       this.image = result.ok[0];
     },
     async updateHeader() {
