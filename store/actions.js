@@ -128,6 +128,7 @@ export default {
     } catch (error) {}
   },
 
+  //Orer
   async getListOrder({ commit }, { page = 1 }) {
     try {
       const response = await axiosInstance.get("/orders", {
@@ -137,6 +138,21 @@ export default {
       });
       if (response.status === 200) {
         return response.data;
+      }
+    } catch (error) {}
+  },
+
+  async updateOrder({ commit }, { id, data }) {
+    try {
+      const response = await axiosInstance.put("/orders/" + id, data);
+      if (response.status === 200) {
+        return {
+          ok: true,
+        };
+      } else {
+        return {
+          ok: false,
+        };
       }
     } catch (error) {}
   },
@@ -196,6 +212,20 @@ export default {
     }
   },
 
+  async deleteHeader({ commit }, id) {
+    try {
+      const response = await axiosInstance.delete("/headers/" + id);
+      if (response.status === 200) {
+        return {
+          ok: true,
+        };
+      } else {
+        return {
+          ok: false,
+        };
+      }
+    } catch (error) {}
+  },
   //Footer
   async getListFooter({ commit }) {
     try {
