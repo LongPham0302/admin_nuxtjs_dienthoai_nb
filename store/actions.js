@@ -301,9 +301,11 @@ export default {
     try {
       const reuslt = await axiosInstance.post("/auth/login", data);
       if (reuslt.status === 201) {
-        localStorage.removeItem('key');
+        localStorage.removeItem("key");
         localStorage.setItem("key", JSON.stringify(reuslt.data));
-        this.$router.push("/");
+        setTimeout(() => {
+          this.$router.push("/");
+        }, 1000);
       }
     } catch (error) {}
   },

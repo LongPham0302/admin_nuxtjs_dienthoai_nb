@@ -17,6 +17,8 @@ module.exports = {
     "@components": "~/components",
     "@plugins": "~/plugins",
     "@pages": "~/pages",
+    "@store": "~/store",
+
   },
   modules: [
     "cookie-universal-nuxt", // Thêm module cookie-universal-nuxt vào đây
@@ -63,5 +65,6 @@ module.exports = {
   plugins: [
     // Other plugins
     { src: "@/plugins/vue-fragment.js", mode: "client" },
+    
   ],
 };
