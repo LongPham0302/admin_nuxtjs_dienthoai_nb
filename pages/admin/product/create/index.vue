@@ -1,6 +1,6 @@
 <template>
   <div class="col-span-10 mt-20 ml-10">
-    <label class="block mb-1 text-sm" for="input1"> name:</label>
+    <label class="block mb-1 text-sm" for="input1"> Tên sản phẩm:</label>
 
     <input
       v-model="name"
@@ -11,7 +11,7 @@
       placeholder="Full name..."
     />
     <span v-if="error" class="font-medium">Info alert!</span> {{ error }}
-    <label class="block mb-1 text-sm mt-5" for="input1"> price:</label>
+    <label class="block mb-1 text-sm mt-5" for="input1"> Gía:</label>
 
     <input
       v-model="price"
@@ -21,7 +21,7 @@
       autofocus
       placeholder="Full price..."
     />
-    <label class="block mb-1 text-sm mt-5" for="input2"> guarantee:</label>
+    <label class="block mb-1 text-sm mt-5" for="input2"> Số Tháng Bảo Hành:</label>
 
     <input
       v-model="guarantee"
@@ -61,7 +61,7 @@
       id="countries"
       class="w-3/5 mt-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
     >
-      <option selected>Choose a category</option>
+      <option selected>Chọn loại category</option>
       <option
         v-for="(item, index) in getListCategories"
         :key="index"
@@ -72,7 +72,7 @@
     </select>
 
     <label for="message" class="mt-5 block mb-2 text-gray-900 dark:text-white"
-      >detail</label
+      >Chi Tiết Sản Phẩm</label
     >
     <textarea
       v-model="basicInfo"
@@ -91,7 +91,7 @@
       class="text-white bg-blue-700 hover:bg-blue-800 rounded p-3 mt-4"
       @click="handleCreateProduct()"
     >
-      create Product
+      tạo Product
     </button>
   </div>
 </template>

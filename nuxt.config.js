@@ -1,6 +1,9 @@
 // nuxt.config.js
 
 module.exports = {
+  env: {
+    apiUrl: process.env.apiUrl ,
+  },
   generate: {
     fallback: true,
   },
