@@ -414,4 +414,17 @@ export default {
     } finally {
     }
   },
+
+  //Dashboard
+
+  async getDashboard({ commit }) {
+    try {
+      const response = await axiosInstance.get("/reports");
+      if (response.status === 200) {
+        commit("SET_DASHBOARD", response.data[0]);
+      }
+    } catch (error) {
+      console.error("Error fetching dashboard:", error);
+    }
+  },
 };

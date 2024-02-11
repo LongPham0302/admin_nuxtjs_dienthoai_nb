@@ -7,4 +7,5 @@ export default {
   detailedOrder: (state) => state.order,
   gettotalPages: (state) => state.totalPages,
   getBanner: (state) => state.banners,
+  getReport: (state) => state.dashboard,
 };

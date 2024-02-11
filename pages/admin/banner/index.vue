@@ -50,7 +50,7 @@ export default {
     getImageUrl(imagePath) {
       // Thay thế '\' bằng '/' để đảm bảo đường dẫn hợp lệ trên mạng
       // Kết hợp đường dẫn của máy chủ với đường dẫn của hình ảnh
-      return `${this.$config.apiUrl}/${imagePath}`;
+      return `${process.env.apiUrl}/${imagePath}`;
     },
   },
 };

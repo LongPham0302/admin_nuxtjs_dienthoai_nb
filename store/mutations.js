@@ -21,4 +21,7 @@ export default {
     state.banners = banners; // Cập nhật dữ liệu totalPages
   },
   
+  SET_DASHBOARD(state, dashboard) {
+    state.dashboard = dashboard; // Cập nhật dữ liệu totalPages
+  }
 };
