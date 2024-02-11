@@ -34,7 +34,7 @@
     <div v-if="image">
       <img
         class="mr-2 object-cover w-12 h-12 mt-5"
-        :src="`http://localhost:4000/${image}`"
+        :src="getImageUrl(image)"
         srcset=""
       />
     </div>
@@ -103,6 +103,11 @@ export default {
         this.operatingHours = res.operatingHours;
         this.image = res.image;
       });
+    },
+    getImageUrl(imagePath) {
+      // Thay thế '\' bằng '/' để đảm bảo đường dẫn hợp lệ trên mạng
+      // Kết hợp đường dẫn của máy chủ với đường dẫn của hình ảnh
+      return `${this.$config.apiUrl}/${imagePath}`;
     },
   },
 };

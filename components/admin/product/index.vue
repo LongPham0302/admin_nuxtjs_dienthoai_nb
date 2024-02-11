@@ -29,7 +29,7 @@
                 v-for="(image, imageIndex) in item.images"
                 :key="imageIndex"
                 class="mr-2 object-cover w-5 h-5 mt-5"
-                :src="`http://localhost:4000/${image}`"
+                :src="getImageUrl(image)"
                 alt=""
               />
             </div>
@@ -125,9 +125,6 @@ export default {
       return this.gettotalPages;
     },
   },
-  mounted() {
-    this.totalPages = this.gettotalPages;
-  },
   methods: {
     changePage(index) {
       // Xử lý khi chuyển trang, ví dụ: lưu trang hiện tại vào data
@@ -157,6 +154,11 @@ export default {
     },
     cancelDelete() {
       this.showModal = false;
+    },
+    getImageUrl(imagePath) {
+      // Thay thế '\' bằng '/' để đảm bảo đường dẫn hợp lệ trên mạng
+      // Kết hợp đường dẫn của máy chủ với đường dẫn của hình ảnh
+      return `${process.env.apiUrl}/${imagePath}`;
     },
   },
 };

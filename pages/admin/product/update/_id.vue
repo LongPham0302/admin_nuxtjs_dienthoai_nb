@@ -1,6 +1,6 @@
 <template>
   <div class="col-span-10 mt-20 ml-10" v-if="callApi">
-    <label class="block mb-1 text-sm" for="input1"> name:</label>
+    <label class="block mb-1 text-sm" for="input1"> Tên Sản Phẩm:</label>
 
     <input
       v-model="name"
@@ -11,7 +11,7 @@
       placeholder="Full name..."
     />
     <span v-if="error" class="font-medium">Info alert!</span> {{ error }}
-    <label class="block mb-1 text-sm mt-5" for="input1"> price:</label>
+    <label class="block mb-1 text-sm mt-5" for="input1"> Gía:</label>
 
     <input
       v-model="price"
@@ -21,7 +21,7 @@
       autofocus
       placeholder="Full price..."
     />
-    <label class="block mb-1 text-sm mt-5" for="input2"> guarantee:</label>
+    <label class="block mb-1 text-sm mt-5" for="input2"> Tháng Bảo Hành:</label>
 
     <input
       v-model="guarantee"
@@ -57,7 +57,7 @@
     </label>
 
     <label for="message" class="mt-5 block mb-2 text-gray-900 dark:text-white"
-      >detail</label
+      >Chi Tiết Sản Phẩm</label
     >
     <textarea
       v-model="basicInfo"
@@ -69,14 +69,46 @@
 
     <br />
     <div class="flex">
-      <img
+      <div
         v-for="(image, imageIndex) in images"
         :key="imageIndex"
-        class="mr-2 object-cover w-12 h-12"
-        :src="`http://localhost:4000/${image}`"
-        alt=""
-      />
+        class="relative mr-2"
+      >
+        <img
+          class="object-cover w-12 h-12"
+          :src="`http://localhost:4000/${image}`"
+          alt=""
+        />
+        <div
+          class="absolute top-0 right-0 p-1 cursor-pointer bg-white rounded-full"
+          @click="removeImage(imageIndex)"
+        >
+          <svg
+            class="w-4 h-4 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </div>
+      </div>
+      <div class="mt-2 flex">
+        <input
+          type="file"
+          multiple="multiple"
+          ref="file"
+          @blur="handleImageUpload"
+        />
+      </div>
     </div>
+
     <br />
 
     <button
@@ -84,7 +116,7 @@
       class="text-white bg-blue-700 hover:bg-blue-800 rounded p-3 mt-4"
       @click="handleUpdateProduct()"
     >
-      update Product
+      Cập Nhật Product
     </button>
   </div>
 </template>
@@ -96,7 +128,6 @@ export default {
     this.$store
       .dispatch("findProductbyId", this.$route.params.id)
       .then((res) => {
-        console.log("res", res.basicInfo);
         this.name = res.name;
         this.price = res.price;
         this.images = res.images;
@@ -127,12 +158,31 @@ export default {
         status: this.status,
         basicInfo: this.basicInfo.split("\n"),
         guarantee: this.guarantee,
+        images: this.images,
       };
       const id = this.$route.params.id;
       this.$store.dispatch("UpdateProduct", { id, data }).then((res) => {
         if (res.ok === true) {
           this.$router.replace("/admin/product");
         }
+      });
+    },
+    getImageUrl(imagePath) {
+      // Thay thế '\' bằng '/' để đảm bảo đường dẫn hợp lệ trên mạng
+      // Kết hợp đường dẫn của máy chủ với đường dẫn của hình ảnh
+      return `${this.$config.apiUrl}/${imagePath}`;
+    },
+    removeImage(imageIndex) {
+      // Xóa ảnh khỏi mảng images dựa trên imageIndex
+      this.images.splice(imageIndex, 1);
+    },
+    handleImageUpload() {
+      let formData = new FormData();
+      for (var i = 0; i < this.$refs.file.files.length; i++) {
+        formData.append("photo", this.$refs.file.files[i]);
+      }
+      this.$store.dispatch("upload", formData).then((res) => {
+        this.images = this.images.concat(res.ok);
       });
     },
   },
