@@ -1,6 +1,7 @@
 // services/socketService.js
 import io from 'socket.io-client';
+const apiUrl = process.env.apiUrl; // Lấy apiUrl từ biến môi trường
 
-const socket = io('http://localhost:4000'); // Điều chỉnh URL tới địa chỉ của server NestJS
+const socket = io(apiUrl); // Điều chỉnh URL tới địa chỉ của server NestJS
 
 export default socket;
