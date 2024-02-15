@@ -303,9 +303,10 @@ export default {
       if (reuslt.status === 201) {
         localStorage.removeItem("key");
         localStorage.setItem("key", JSON.stringify(reuslt.data));
-        setTimeout(() => {
+        let data = JSON.parse(localStorage.getItem("key"));
+        if (data) {
           this.$router.push("/");
-        }, 1000);
+        }
       }
     } catch (error) {}
   },
