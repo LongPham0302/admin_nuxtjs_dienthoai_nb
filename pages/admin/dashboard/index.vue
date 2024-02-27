@@ -1,14 +1,12 @@
 <template>
-  <DashboardAdminComponent  />
+  <DashboardAdminComponent />
 </template>
 
 <script>
-import DashboardAdminComponent  from "@components/admin/dashboard";
 export default {
-  name: "DashboardAdmin",
   layout: "admin",
   components: {
-    DashboardAdminComponent ,
+    DashboardAdminComponent,
   },
 };
 </script>

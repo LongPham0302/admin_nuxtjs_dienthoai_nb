@@ -74,7 +74,7 @@ export default {
           policyRegulations: this.policyRegulations.split("\n"),
         };
         console.log("data", data);
-        const response = await this.$store.dispatch("updateFooter", {
+        const response = await this.$store.dispatch("footer/updateFooter", {
           id,
           data,
         });
@@ -90,7 +90,7 @@ export default {
     async getFooterById() {
       try {
         let id = this.$route.params.id;
-        const res = await this.$store.dispatch("getFooterById", id);
+        const res = await this.$store.dispatch("footer/getFooterById", id);
         this.companyLocation = res.companyLocation.join("\n");
         this.customerSupport = res.customerSupport.join("\n");
         this.policyRegulations = res.policyRegulations.join("\n");

@@ -46,7 +46,7 @@ export default {
                 contactPhone: this.contactPhone,
                 operatingHours: this.operatingHours,
             }
-            this.$store.dispatch('createHeader', data).then((res) => {
+            this.$store.dispatch('header/createHeader', data).then((res) => {
                 if (res.ok === true) {
                     return this.$router.replace('/admin/header/')
                 }

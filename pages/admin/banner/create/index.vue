@@ -68,12 +68,12 @@ export default {
       }
 
       try {
-        const result = await this.$store.dispatch("upload", formData);
+        const result = await this.$store.dispatch("app/upload", formData);
         let data = {
           image: result.ok,
         };
         if (result) {
-          this.$store.dispatch("createBanner", data).then((res) => {
+          this.$store.dispatch("banner/createBanner", data).then((res) => {
             res.ok === true ? this.$router.push("/admin/banner/") : null;
           });
         }

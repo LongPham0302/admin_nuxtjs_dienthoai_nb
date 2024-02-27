@@ -1,8 +1,10 @@
 // nuxt.config.js
 
 module.exports = {
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
   env: {
-    apiUrl: process.env.apiUrl ,
+    apiUrl: process.env.apiUrl,
   },
   generate: {
     fallback: true,
@@ -18,7 +20,6 @@ module.exports = {
     "@plugins": "~/plugins",
     "@pages": "~/pages",
     "@store": "~/store",
-
   },
   modules: [
     "cookie-universal-nuxt", // Thêm module cookie-universal-nuxt vào đây
@@ -65,6 +66,5 @@ module.exports = {
   plugins: [
     // Other plugins
     { src: "@/plugins/vue-fragment.js", mode: "client" },
-    
   ],
 };

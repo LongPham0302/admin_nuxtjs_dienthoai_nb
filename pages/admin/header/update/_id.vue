@@ -76,7 +76,7 @@ export default {
       for (var i = 0; i < this.$refs.file.files.length; i++) {
         formData.append("photo", this.$refs.file.files[i]);
       }
-      const result = await this.$store.dispatch("upload", formData);
+      const result = await this.$store.dispatch("app/upload", formData);
       console.log(result.ok[0]);
       this.image = result.ok[0];
     },
@@ -89,7 +89,7 @@ export default {
         image: this.image,
       };
       this.$store
-        .dispatch("updateHeader", { id: this.$route.params.id, data })
+        .dispatch("header/updateHeader", { id: this.$route.params.id, data })
         .then((res) => {
           if (res.ok === true) {
             this.$router.replace("/admin/header/");
@@ -97,7 +97,7 @@ export default {
         });
     },
     async getHeader() {
-      this.$store.dispatch("getHeader", this.$route.params.id).then((res) => {
+      this.$store.dispatch("header/getHeader", this.$route.params.id).then((res) => {
         this.companyName = res.companyName;
         this.contactPhone = res.contactPhone;
         this.operatingHours = res.operatingHours;

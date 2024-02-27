@@ -40,7 +40,7 @@ export default {
                 socialMedia: this.socialMedia,
                 yearRelease: this.yearRelease
             }
-            this.$store.dispatch("createFooter", data).then(res => {
+            this.$store.dispatch("footer/createFooter", data).then(res => {
                 if(res.ok) {
                     return this.$router.replace("/admin/footer");
                 }

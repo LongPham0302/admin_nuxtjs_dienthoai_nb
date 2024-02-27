@@ -102,7 +102,7 @@ export default {
   layout: "admin",
 
   created() {
-    this.$store.dispatch("getlistCategories");
+    this.$store.dispatch("category/getlistCategories");
   },
   data() {
     return {

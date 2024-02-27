@@ -29,7 +29,7 @@ export default {
             let data = {
                 name: this.name
             }
-            this.$store.dispatch('createCategory', data).then((res) => {
+            this.$store.dispatch('category/createCategory', data).then((res) => {
                 if (res.ok === true) {
                     return this.$router.replace('/admin/category/')
                 }

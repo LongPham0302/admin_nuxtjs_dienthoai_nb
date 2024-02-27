@@ -74,7 +74,7 @@ export default {
   methods: {
     async getDetailedOrder(orderId) {
       // Gửi action tới store để lấy thông tin chi tiết đơn hàng
-      await this.$store.dispatch("getDetailedOrder", orderId);
+      await this.$store.dispatch("order/getDetailedOrder", orderId);
     },
     formatPrice(price) {
       // Chia ra đơn vị của số tiền
@@ -136,7 +136,7 @@ export default {
       let data = {
         status: true,
       };
-      this.$store.dispatch("updateOrder", { id, data }).then((res) => {
+      this.$store.dispatch("order/updateOrder", { id, data }).then((res) => {
         if (res.ok === true) {
           this.$router.replace("/admin/order/");
         }

@@ -68,7 +68,7 @@ export default {
       }
 
       try {
-        const result = await this.$store.dispatch("upload", formData);
+        const result = await this.$store.dispatch("app/upload", formData);
         let data = {
           image: result.ok,
         };

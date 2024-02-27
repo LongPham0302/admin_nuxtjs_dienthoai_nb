@@ -28,14 +28,14 @@ export default {
             let data = {
                 name: this.name
             }
-            this.$store.dispatch('updateCategory', { id: this.$route.params.id, data }).then((res) => {
+            this.$store.dispatch('category/updateCategory', { id: this.$route.params.id, data }).then((res) => {
                 if (res.ok === true) {
                     this.$router.replace('/admin/category/')
                 }
             });
         },
         async getCategory() {
-            this.$store.dispatch('getCategory', this.$route.params.id).then((res) => this.name = res.name)
+            this.$store.dispatch('category/getCategory', this.$route.params.id).then((res) => this.name = res.name)
         }
     }
 

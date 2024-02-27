@@ -33,7 +33,7 @@ export default {
   components: {},
   layout: "admin",
   created() {
-    this.$store.dispatch("getBanner");
+    this.$store.dispatch("banner/getBanner");
   },
   computed: {
     getBanner() {
