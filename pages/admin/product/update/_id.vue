@@ -68,6 +68,21 @@
     ></textarea>
 
     <br />
+    <select
+      v-model="category"
+      id="countries"
+      class="w-3/5 mt-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    >
+      <option selected>Chọn loại category</option>
+      <option
+        v-for="(item, index) in getListCategories"
+        :key="index"
+        :value="item._id"
+      >
+        {{ item.name }}
+      </option>
+    </select>
+  <br>
     <div class="flex">
       <div
         v-for="(image, imageIndex) in images"
@@ -121,9 +136,12 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   layout: "admin",
   created() {
+    this.$store.dispatch("getlistCategories");
     this.callApi = false;
     this.$store
       .dispatch("findProductbyId", this.$route.params.id)
@@ -148,7 +166,11 @@ export default {
       basicInfo: "",
       guarantee: 0,
       callApi: false,
+      category: null,
     };
+  },
+  computed: {
+    ...mapGetters(["getListCategories"]),
   },
   methods: {
     handleUpdateProduct() {
@@ -159,6 +181,7 @@ export default {
         basicInfo: this.basicInfo.split("\n"),
         guarantee: this.guarantee,
         images: this.images,
+        category: this.category,
       };
       const id = this.$route.params.id;
       this.$store.dispatch("UpdateProduct", { id, data }).then((res) => {

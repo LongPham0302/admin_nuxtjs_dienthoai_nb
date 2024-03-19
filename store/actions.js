@@ -58,11 +58,7 @@ export default {
 
   async getlistProducts({ commit }, { page = 1 }) {
     try {
-      const response = await axiosInstance.get("/product/product", {
-        params: {
-          page: page,
-        },
-      });
+      const response = await axiosInstance.get("/product?category=");
       if (response.status === 200) {
         commit("SET_LIST_PRODUCT", response.data.products);
         commit("SET_TOTAL_PAGES", response.data.pagination.totalPages);
@@ -77,7 +73,7 @@ export default {
       const response = await axiosInstance.post("/upload/uploads/", photo);
       if (response.status === 201) {
         return {
-          ok: response.data.image,
+          ok: response.data.url,
         };
       } else {
         return {
@@ -86,6 +82,29 @@ export default {
       }
     } catch (error) {
       return error.response.data.message;
+    }
+  },
+
+  async uploadVideos({ commit }, video) {
+    try {
+      commit("SET_LOADING", true);
+      const response = await axiosInstance.post(
+        "/cloudinary/video/create_video/",
+        video
+      );
+      if (response.status === 201) {
+        return {
+          ok: response.data.video,
+        };
+      } else {
+        return {
+          ok: false,
+        };
+      }
+    } catch (error) {
+      return error.response.data.message;
+    } finally {
+      commit("SET_LOADING", false);
     }
   },
 

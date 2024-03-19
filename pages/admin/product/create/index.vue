@@ -21,7 +21,9 @@
       autofocus
       placeholder="Full price..."
     />
-    <label class="block mb-1 text-sm mt-5" for="input2"> Số Tháng Bảo Hành:</label>
+    <label class="block mb-1 text-sm mt-5" for="input2">
+      Số Tháng Bảo Hành:</label
+    >
 
     <input
       v-model="guarantee"
@@ -86,6 +88,13 @@
     <input type="file" ref="file" multiple="multiple" />
     <br />
 
+    <span>Videos Upload</span>
+    <br />
+    <input type="file" ref="file" multiple="multiple" />
+    <button @click="UploadVideos">uploads video</button>
+    <span> {{ loading }}</span>
+    <br />
+
     <button
       type="button"
       class="text-white bg-blue-700 hover:bg-blue-800 rounded p-3 mt-4"
@@ -114,10 +123,14 @@ export default {
       status: true,
       basicInfo: "",
       guarantee: 0,
+      videos: [],
     };
   },
   computed: {
     ...mapGetters(["getListCategories"]),
+    loading() {
+      return this.$store.state.loading;
+    },
   },
   methods: {
     handleCategoryChange(_id) {
@@ -142,7 +155,7 @@ export default {
         name: this.name,
         price: this.price,
         status: this.status,
-        basicInfo: this.basicInfo.split('\n'),
+        basicInfo: this.basicInfo.split("\n"),
         images: this.images,
         category: this.category,
         guarantee: this.guarantee,
@@ -152,6 +165,14 @@ export default {
           return this.$router.replace("/admin/product/");
         }
       });
+    },
+    async UploadVideos() {
+      let formData = new FormData();
+      for (var i = 0; i < this.$refs.file.files.length; i++) {
+        formData.append("video", this.$refs.file.files[i]);
+      }
+      const result = await this.$store.dispatch("uploadVideos", formData);
+      this.videos.push(result.ok);
     },
   },
 };

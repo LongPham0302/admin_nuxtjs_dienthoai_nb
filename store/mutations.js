@@ -20,8 +20,10 @@ export default {
   SET_BANNERS(state, banners) {
     state.banners = banners; // Cập nhật dữ liệu totalPages
   },
-  
   SET_DASHBOARD(state, dashboard) {
     state.dashboard = dashboard; // Cập nhật dữ liệu totalPages
-  }
+  },
+  SET_LOADING(state, loading) {
+    state.loading = loading; // Cập nhật dữ liệu totalPages
+  },
 };

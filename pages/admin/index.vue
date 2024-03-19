@@ -1,6 +1,7 @@
 <template>
   <div class="col-span-10">
     <categoriesAdmin />
+    
   </div>
 </template>
 <script>

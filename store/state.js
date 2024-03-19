@@ -6,6 +6,7 @@ const state = () => ({
   order: null,
   totalPages: 0,
   banners: {},
-  dashboard: {}
+  dashboard: {},
+  loading: false,
 });
 export default state;

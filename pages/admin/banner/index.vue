@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     getBanner() {
-      return this.$store.getters.getBanner;
+      return this.$store.getters.getBanner || [];
     },
   },
   methods: {
